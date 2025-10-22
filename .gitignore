@@ -1,0 +1,6 @@
+data/*
+saved_models/*
+__pycache__/*
+slurm/*
+*.pkl
+*.pt
