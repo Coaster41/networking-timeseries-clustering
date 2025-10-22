@@ -2,7 +2,9 @@
 
 ## Usage
 For data preprocessing/cluster -> classification pipeline only use `ts_batch_preprocess.ipynb` and `train_patchtst.py`.
+
 The notebook learns the important features from a random sample of the entire dataset (one random day from each region) and trains a global GMM. It then uses the trained global GMM to cluster the entire dataset. This notebook cleans up the dataset by removing sparse 15-second groups and interpolation for missing values (token: missing -> -1, nearest: missing -> nearest existing value). The resulting files are saved as `cluster_results.csv` which contain a mapping of 15-second groups to cluster and `clustering_data.csv` that contains a cleaned version of the dataset. Each file contains all data from a single day.
+
 The training script is used on the preprocessed data to train a PatchTST Classification model. The current code was tested on ~400k 15-second groups classifying the cluster based on the first second of data (100 10ms datapoints). Additionally, the training script includes support for multi-gpu training. See example below:
 
 ```
